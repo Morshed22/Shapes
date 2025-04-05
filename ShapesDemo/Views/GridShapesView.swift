@@ -11,6 +11,7 @@ struct GridShapesView <ViewModel>: View where ViewModel: ShapesViewModelProtocol
     
     @StateObject private var viewModel: ViewModel
     private let layout = [GridItem(.adaptive(minimum: 80))]
+    @State private var editCircleBttonClicked: Bool = false
     
     init(viewModel: ViewModel) {
        _viewModel = StateObject(wrappedValue: viewModel)
@@ -30,6 +31,9 @@ struct GridShapesView <ViewModel>: View where ViewModel: ShapesViewModelProtocol
                     await viewModel.fetchAllShapes()
                 }
             }
+            .navigationDestination(isPresented: $editCircleBttonClicked) {
+                EditCircleView(viewModel: viewModel)
+            }
             Spacer()
             bottomView
                 .toolbar {
@@ -40,7 +44,7 @@ struct GridShapesView <ViewModel>: View where ViewModel: ShapesViewModelProtocol
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Edit Circles") {
-                           
+                           editCircleBttonClicked.toggle()
                         }
                     }
                 }
