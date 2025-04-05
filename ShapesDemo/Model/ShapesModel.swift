@@ -8,15 +8,15 @@
 
 // MARK: - ShapesModel
 class ShapesModel: Codable {
-    let buttons: [Shape]
+    let buttons: [ShapeModel]
 
-    init(buttons: [Shape]) {
+    init(buttons: [ShapeModel]) {
         self.buttons = buttons
     }
 }
 
 // MARK: - Shape
-class Shape: Codable {
+class ShapeModel: Codable {
     let name, drawPath: String
 
     enum CodingKeys: String, CodingKey {

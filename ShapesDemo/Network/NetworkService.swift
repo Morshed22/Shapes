@@ -6,11 +6,11 @@
 //
 import Foundation
 
-protocol ShapesServiceProtocol {
+protocol NetworkServiceProtocol {
     func fetchAllShapes() async throws -> Data
 }
 
-struct ShapesService : ShapesServiceProtocol {
+struct NetworkService : NetworkServiceProtocol {
     
     func fetchAllShapes() async throws -> Data  {
         
