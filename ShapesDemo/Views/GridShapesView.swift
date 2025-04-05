@@ -7,11 +7,30 @@
 
 import SwiftUI
 
-struct GridShapesView: View {
+struct GridShapesView <ViewModel>: View where ViewModel: ShapesViewModelProtocol {
+    
+    @StateObject private var viewModel: ViewModel
+    private let layout = [GridItem(.adaptive(minimum: 80))]
+    
+    init(viewModel: ViewModel) {
+       _viewModel = StateObject(wrappedValue: viewModel)
+    }
+    
     var body: some View {
         NavigationStack {
+            ScrollView {
+                LazyVGrid(columns: layout, spacing: 20 ) {
+                    ForEach(viewModel.allShapes, id: \.id) { item in
+                        if let shape = ShapeType(rawValue: item.drawPath) {
+                            ShapeView(shape: shape)
+                        }
+                    }
+                }
+                .task {
+                    await viewModel.fetchAllShapes()
+                }
+            }
             Spacer()
-            
             bottomView
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
@@ -47,5 +66,5 @@ struct GridShapesView: View {
 }
 
 #Preview {
-    GridShapesView()
+    GridShapesView(viewModel: ShapesViewModel(networkService: NetworkService()))
 }

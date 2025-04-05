@@ -11,7 +11,7 @@ import SwiftUI
 struct ShapesDemoApp: App {
     var body: some Scene {
         WindowGroup {
-            GridShapesView()
+            GridShapesView(viewModel: ShapesViewModel(networkService: NetworkService()))
         }
     }
 }

@@ -9,15 +9,15 @@ import SwiftUI
 
 struct ShapeView: View {
     var shape: ShapeType
-
+    
     var body: some View {
         switch shape {
         case .circle:
-            Circle().frame(width: 40, height: 40)
+            Circle()
         case .square:
-            Rectangle().frame(width: 40, height: 40)
+            Rectangle()
         case .triangle:
-            Triangle().frame(width: 40, height: 40)
+            Triangle()
         }
     }
 }
@@ -30,7 +30,7 @@ struct Triangle: Shape {
         path.addLine(to: CGPoint(x: rect.minX, y: rect.maxY))
         path.addLine(to: CGPoint(x: rect.maxX, y: rect.maxY))
         path.addLine(to: CGPoint(x: rect.midX, y: rect.minY))
-
+        
         return path
     }
 }
