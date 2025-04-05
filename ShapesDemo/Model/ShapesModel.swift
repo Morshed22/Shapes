@@ -5,7 +5,7 @@
 //  Created by Morshed Alam on 4/5/25.
 //
 
-
+import Foundation
 // MARK: - ShapesModel
 class ShapesModel: Codable {
     let buttons: [ShapeModel]
@@ -16,7 +16,8 @@ class ShapesModel: Codable {
 }
 
 // MARK: - Shape
-class ShapeModel: Codable {
+class ShapeModel: Codable, Identifiable {
+    let id = UUID()
     let name, drawPath: String
 
     enum CodingKeys: String, CodingKey {
@@ -28,4 +29,8 @@ class ShapeModel: Codable {
         self.name = name
         self.drawPath = drawPath
     }
+}
+
+enum ShapeType: String, Codable {
+    case circle, square, triangle
 }
