@@ -34,12 +34,15 @@ struct GridShapesView <ViewModel>: View where ViewModel: ShapesViewModelProtocol
             .navigationDestination(isPresented: $editCircleBttonClicked) {
                 EditCircleView(viewModel: viewModel)
             }
+            .alert("", isPresented: $viewModel.hasError, actions: {}) {
+                Text(viewModel.errMsg)
+            }
             Spacer()
             bottomView
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button("Clear ALL") {
-                            viewModel.deleteAllShape()
+                            viewModel.deleteAllShapes()
                         }
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {

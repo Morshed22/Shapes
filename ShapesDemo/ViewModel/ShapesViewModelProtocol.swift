@@ -15,7 +15,7 @@ protocol ShapesViewModelProtocol: ObservableObject {
     func fetchAllShapes() async
     func addShape(_ shapeType: ShapeType)
     func addCircleShape()
-    func deleteAllShape()
+    func deleteAllShapes()
     func deleAllCircleShapes()
     func deleteLastCircle()
     
@@ -52,6 +52,7 @@ class ShapesViewModel: ShapesViewModelProtocol {
         }
     }
     
+    // Mark: add new shape
     func addShape(_ shapeType: ShapeType) {
         let shapeModel:ShapeModel = .init(name: shapeType.name, drawPath: shapeType.rawValue)
         allShapes.append(shapeModel)
@@ -60,22 +61,25 @@ class ShapesViewModel: ShapesViewModelProtocol {
         }
     }
     
+   // Mark: add Circle shape
     func addCircleShape() {
         let shapeModel:ShapeModel = .init(name: ShapeType.circle.name, drawPath: ShapeType.circle.rawValue)
         allShapes.append(shapeModel)
         circleShapes.append(shapeModel)
     }
     
-    func deleteAllShape() {
+    // Mark: delete all shapes
+    func deleteAllShapes() {
         allShapes.removeAll()
         circleShapes.removeAll()
     }
     
+    // Mark: delete all Circle shapes
     func deleAllCircleShapes() {
         circleShapes.removeAll()
         allShapes.removeAll(where: { $0.name == "Circle" })
     }
-    
+    // Mark: delete last Circle shape
     func deleteLastCircle() {
         if circleShapes.count > 0, let id = circleShapes.last?.id {
             circleShapes.removeLast()
