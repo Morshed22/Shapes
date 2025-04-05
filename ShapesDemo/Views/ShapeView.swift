@@ -14,10 +14,16 @@ struct ShapeView: View {
         switch shape {
         case .circle:
             Circle()
+                .fill(.blue)
+                .frame(width: 80, height: 80)
         case .square:
             Rectangle()
+                .fill(.blue)
+                .frame(width: 80, height: 80)
         case .triangle:
             Triangle()
+                .fill(.blue)
+                .frame(width: 80, height: 80)
         }
     }
 }

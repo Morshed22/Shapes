@@ -51,15 +51,15 @@ struct GridShapesView <ViewModel>: View where ViewModel: ShapesViewModelProtocol
     @ViewBuilder var bottomView: some View {
         HStack {
             Button("Circle") {
-                
+                viewModel.addShape(.circle)
             }
             Spacer()
             Button("Square") {
-                
+                viewModel.addShape(.square)
             }
             Spacer()
             Button("Triangle") {
-                
+                viewModel.addShape(.triangle)
             }
         }.padding(.horizontal)
     }

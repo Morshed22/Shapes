@@ -12,6 +12,7 @@ protocol ShapesViewModelProtocol: ObservableObject {
     var errMsg: String { get }
     var hasError: Bool { get set }
     func fetchAllShapes() async
+    func addShape(_ shapeType: ShapeType)
 }
 
 class ShapesViewModel: ShapesViewModelProtocol {
@@ -42,5 +43,10 @@ class ShapesViewModel: ShapesViewModelProtocol {
             }
             print(error.localizedDescription)
         }
+    }
+    
+    func addShape(_ shapeType: ShapeType) {
+        let shapeModel:ShapeModel = .init(name: shapeType.name, drawPath: shapeType.rawValue)
+        allShapes.append(shapeModel)
     }
 }

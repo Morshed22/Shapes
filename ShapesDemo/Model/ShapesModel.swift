@@ -7,7 +7,7 @@
 
 import Foundation
 // MARK: - ShapesModel
-class ShapesModel: Codable {
+class ShapesModel: Decodable {
     let buttons: [ShapeModel]
 
     init(buttons: [ShapeModel]) {
@@ -16,7 +16,8 @@ class ShapesModel: Codable {
 }
 
 // MARK: - Shape
-class ShapeModel: Codable, Identifiable {
+class ShapeModel: Decodable, Identifiable {
+    
     let id = UUID()
     let name, drawPath: String
 
@@ -33,4 +34,14 @@ class ShapeModel: Codable, Identifiable {
 
 enum ShapeType: String, Codable {
     case circle, square, triangle
+    var name: String {
+        switch self {
+        case .circle:
+            return "Circle"
+        case .square:
+            return "Square"
+        case .triangle:
+            return "Triangle"
+        }
+    }
 }
