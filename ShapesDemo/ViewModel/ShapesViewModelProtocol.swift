@@ -13,6 +13,7 @@ protocol ShapesViewModelProtocol: ObservableObject {
     var hasError: Bool { get set }
     func fetchAllShapes() async
     func addShape(_ shapeType: ShapeType)
+    func deleteAllShape()
 }
 
 class ShapesViewModel: ShapesViewModelProtocol {
@@ -48,5 +49,9 @@ class ShapesViewModel: ShapesViewModelProtocol {
     func addShape(_ shapeType: ShapeType) {
         let shapeModel:ShapeModel = .init(name: shapeType.name, drawPath: shapeType.rawValue)
         allShapes.append(shapeModel)
+    }
+    
+    func deleteAllShape() {
+        allShapes.removeAll()
     }
 }

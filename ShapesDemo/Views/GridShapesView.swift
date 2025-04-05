@@ -35,12 +35,12 @@ struct GridShapesView <ViewModel>: View where ViewModel: ShapesViewModelProtocol
                 .toolbar {
                     ToolbarItem(placement: .navigationBarLeading) {
                         Button("Clear ALL") {
-                            
+                            viewModel.deleteAllShape()
                         }
                     }
                     ToolbarItem(placement: .navigationBarTrailing) {
                         Button("Edit Circles") {
-                            print("Help tapped!")
+                           
                         }
                     }
                 }
