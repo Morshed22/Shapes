@@ -14,7 +14,7 @@ struct GridShapesView <ViewModel>: View where ViewModel: ShapesViewModelProtocol
     @State private var editCircleBttonClicked: Bool = false
     
     init(viewModel: ViewModel) {
-       _viewModel = StateObject(wrappedValue: viewModel)
+        _viewModel = StateObject(wrappedValue: viewModel)
     }
     
     var body: some View {
@@ -27,13 +27,11 @@ struct GridShapesView <ViewModel>: View where ViewModel: ShapesViewModelProtocol
                         }
                     }
                 }
-                .task {
-                    await viewModel.fetchAllShapes()
-                }
             }
             .navigationDestination(isPresented: $editCircleBttonClicked) {
                 EditCircleView(viewModel: viewModel)
             }
+            
             .alert("", isPresented: $viewModel.hasError, actions: {}) {
                 Text(viewModel.errMsg)
             }
@@ -51,6 +49,9 @@ struct GridShapesView <ViewModel>: View where ViewModel: ShapesViewModelProtocol
                         }
                     }
                 }
+        }
+        .task {
+            await viewModel.fetchAllShapes()
         }
     }
     

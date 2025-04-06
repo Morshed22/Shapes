@@ -29,6 +29,16 @@
 		03A821EF2DA1A1AF004926B1 /* ShapesDemoUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ShapesDemoUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		03A8221C2DA1EA4D004926B1 /* Exceptions for "ShapesDemoTests" folder in "ShapesDemo" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Json/Shapes.json,
+			);
+			target = 03A821D72DA1A1AE004926B1 /* ShapesDemo */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		03A821DA2DA1A1AE004926B1 /* ShapesDemo */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
@@ -37,6 +47,9 @@
 		};
 		03A821E82DA1A1AF004926B1 /* ShapesDemoTests */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				03A8221C2DA1EA4D004926B1 /* Exceptions for "ShapesDemoTests" folder in "ShapesDemo" target */,
+			);
 			path = ShapesDemoTests;
 			sourceTree = "<group>";
 		};
